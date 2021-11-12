@@ -4,6 +4,8 @@ module.exports = {
         development: {
             provider: () => new HDWalletProvider("2dca9b1cb7916875a2957d303cc793f0613c695ea1a70b7e2778e8935dcb50f8", `http://47.241.91.2:6789`),
             network_id: "*",       // Any network (default: none)
+            gas: 4612388,
+            gasPrice: 500000000004,
          },
   },
   // Set default mocha options here, use special reporters etc.
