@@ -1,0 +1,15 @@
+{
+    "name": "viperswap-contract-migrate",
+    "version": "0.0.1",
+    "description": "Swap contract deploy",
+    "license": "MIT",
+    "dependencies": {
+      "@uniswap/lib": "4.0.1-alpha",
+      "@pancakeswap/pancake-swap-lib": "^0.0.1",
+      "eth-lib": "^0.1.29",
+      "rlp": "^2.2.6",
+      "@alayanetwork/web3-utils": "^0.13.3",
+      "truffle-hdwallet-provider": "0.0.6",
+      "ethereumjs-wallet": "0.6.2"
+    }
+  }

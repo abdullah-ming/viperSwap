@@ -1,0 +1,10 @@
+{
+  "main": "./contracts/Contract.sol",
+  "deploy": "./build/contracts/Contract.json",
+  "compilers": {
+    "alaya-truffle": "0.13.2",
+    "solc": "",
+    "evmVersion": "istanbul"
+  },
+  "linter": "solhint"
+}

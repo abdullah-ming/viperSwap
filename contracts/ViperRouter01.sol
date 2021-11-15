@@ -1,29 +1,29 @@
-pragma solidity =0.6.6;
+// pragma solidity ^0.6.6;
+pragma solidity ^0.5.16;
 
-import '@uniswap/v2-core/contracts/interfaces/IViperFactory.sol';
-import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
-
+import './interfaces/IViperFactory.sol';
+import './libraries/TransferHelper.sol';
 import './libraries/ViperLibrary.sol';
 import './interfaces/IViperRouter01.sol';
 import './interfaces/IERC20.sol';
-import './interfaces/IWETH.sol';
+import './interfaces/IWATP.sol';
 
 contract ViperRouter01 is IViperRouter01 {
-    address public immutable override factory;
-    address public immutable override WETH;
+    address public factory;
+    address public WATP;
 
     modifier ensure(uint deadline) {
         require(deadline >= block.timestamp, 'ViperRouter: EXPIRED');
         _;
     }
 
-    constructor(address _factory, address _WETH) public {
+    constructor(address _factory, address _WATP) public {
         factory = _factory;
-        WETH = _WETH;
+        WATP = _WATP;
     }
 
-    receive() external payable {
-        assert(msg.sender == WETH); // only accept ETH via fallback from the WETH contract
+    function() external payable {
+        assert(msg.sender == WATP); // only accept ATP via fallback from the WATP contract
     }
 
     // **** ADD LIQUIDITY ****
@@ -64,35 +64,35 @@ contract ViperRouter01 is IViperRouter01 {
         uint amountBMin,
         address to,
         uint deadline
-    ) external override ensure(deadline) returns (uint amountA, uint amountB, uint liquidity) {
+    ) external ensure(deadline) returns (uint amountA, uint amountB, uint liquidity) {
         (amountA, amountB) = _addLiquidity(tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin);
         address pair = ViperLibrary.pairFor(factory, tokenA, tokenB);
         TransferHelper.safeTransferFrom(tokenA, msg.sender, pair, amountA);
         TransferHelper.safeTransferFrom(tokenB, msg.sender, pair, amountB);
         liquidity = IViperPair(pair).mint(to);
     }
-    function addLiquidityETH(
+    function addLiquidityATP(
         address token,
         uint amountTokenDesired,
         uint amountTokenMin,
-        uint amountETHMin,
+        uint amountATPMin,
         address to,
         uint deadline
-    ) external override payable ensure(deadline) returns (uint amountToken, uint amountETH, uint liquidity) {
-        (amountToken, amountETH) = _addLiquidity(
+    ) external payable ensure(deadline) returns (uint amountToken, uint amountATP, uint liquidity) {
+        (amountToken, amountATP) = _addLiquidity(
             token,
-            WETH,
+            WATP,
             amountTokenDesired,
             msg.value,
             amountTokenMin,
-            amountETHMin
+            amountATPMin
         );
-        address pair = ViperLibrary.pairFor(factory, token, WETH);
+        address pair = ViperLibrary.pairFor(factory, token, WATP);
         TransferHelper.safeTransferFrom(token, msg.sender, pair, amountToken);
-        IWETH(WETH).deposit{value: amountETH}();
-        assert(IWETH(WETH).transfer(pair, amountETH));
+        IWATP(WATP).deposit.value(amountATP)();
+        assert(IWATP(WATP).transfer(pair, amountATP));
         liquidity = IViperPair(pair).mint(to);
-        if (msg.value > amountETH) TransferHelper.safeTransferETH(msg.sender, msg.value - amountETH); // refund dust eth, if any
+        if (msg.value > amountATP) TransferHelper.safeTransferATP(msg.sender, msg.value - amountATP); // refund dust ATP, if any
     }
 
     // **** REMOVE LIQUIDITY ****
@@ -104,7 +104,7 @@ contract ViperRouter01 is IViperRouter01 {
         uint amountBMin,
         address to,
         uint deadline
-    ) public override ensure(deadline) returns (uint amountA, uint amountB) {
+    ) public ensure(deadline) returns (uint amountA, uint amountB) {
         address pair = ViperLibrary.pairFor(factory, tokenA, tokenB);
         IViperPair(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
         (uint amount0, uint amount1) = IViperPair(pair).burn(to);
@@ -113,26 +113,26 @@ contract ViperRouter01 is IViperRouter01 {
         require(amountA >= amountAMin, 'ViperRouter: INSUFFICIENT_A_AMOUNT');
         require(amountB >= amountBMin, 'ViperRouter: INSUFFICIENT_B_AMOUNT');
     }
-    function removeLiquidityETH(
+    function removeLiquidityATP(
         address token,
         uint liquidity,
         uint amountTokenMin,
-        uint amountETHMin,
+        uint amountATPMin,
         address to,
         uint deadline
-    ) public override ensure(deadline) returns (uint amountToken, uint amountETH) {
-        (amountToken, amountETH) = removeLiquidity(
+    ) public ensure(deadline) returns (uint amountToken, uint amountATP) {
+        (amountToken, amountATP) = removeLiquidity(
             token,
-            WETH,
+            WATP,
             liquidity,
             amountTokenMin,
-            amountETHMin,
+            amountATPMin,
             address(this),
             deadline
         );
         TransferHelper.safeTransfer(token, to, amountToken);
-        IWETH(WETH).withdraw(amountETH);
-        TransferHelper.safeTransferETH(to, amountETH);
+        IWATP(WATP).withdraw(amountATP);
+        TransferHelper.safeTransferATP(to, amountATP);
     }
     function removeLiquidityWithPermit(
         address tokenA,
@@ -143,25 +143,25 @@ contract ViperRouter01 is IViperRouter01 {
         address to,
         uint deadline,
         bool approveMax, uint8 v, bytes32 r, bytes32 s
-    ) external override returns (uint amountA, uint amountB) {
+    ) external returns (uint amountA, uint amountB) {
         address pair = ViperLibrary.pairFor(factory, tokenA, tokenB);
         uint value = approveMax ? uint(-1) : liquidity;
         IViperPair(pair).permit(msg.sender, address(this), value, deadline, v, r, s);
         (amountA, amountB) = removeLiquidity(tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline);
     }
-    function removeLiquidityETHWithPermit(
+    function removeLiquidityATPWithPermit(
         address token,
         uint liquidity,
         uint amountTokenMin,
-        uint amountETHMin,
+        uint amountATPMin,
         address to,
         uint deadline,
         bool approveMax, uint8 v, bytes32 r, bytes32 s
-    ) external override returns (uint amountToken, uint amountETH) {
-        address pair = ViperLibrary.pairFor(factory, token, WETH);
+    ) external returns (uint amountToken, uint amountATP) {
+        address pair = ViperLibrary.pairFor(factory, token, WATP);
         uint value = approveMax ? uint(-1) : liquidity;
         IViperPair(pair).permit(msg.sender, address(this), value, deadline, v, r, s);
-        (amountToken, amountETH) = removeLiquidityETH(token, liquidity, amountTokenMin, amountETHMin, to, deadline);
+        (amountToken, amountATP) = removeLiquidityATP(token, liquidity, amountTokenMin, amountATPMin, to, deadline);
     }
 
     // **** SWAP ****
@@ -182,7 +182,7 @@ contract ViperRouter01 is IViperRouter01 {
         address[] calldata path,
         address to,
         uint deadline
-    ) external override ensure(deadline) returns (uint[] memory amounts) {
+    ) external ensure(deadline) returns (uint[] memory amounts) {
         amounts = ViperLibrary.getAmountsOut(factory, amountIn, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'ViperRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         TransferHelper.safeTransferFrom(path[0], msg.sender, ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]);
@@ -194,87 +194,83 @@ contract ViperRouter01 is IViperRouter01 {
         address[] calldata path,
         address to,
         uint deadline
-    ) external override ensure(deadline) returns (uint[] memory amounts) {
+    ) external ensure(deadline) returns (uint[] memory amounts) {
         amounts = ViperLibrary.getAmountsIn(factory, amountOut, path);
         require(amounts[0] <= amountInMax, 'ViperRouter: EXCESSIVE_INPUT_AMOUNT');
         TransferHelper.safeTransferFrom(path[0], msg.sender, ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]);
         _swap(amounts, path, to);
     }
-    function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+    function swapExactATPForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
         external
-        override
         payable
         ensure(deadline)
         returns (uint[] memory amounts)
     {
-        require(path[0] == WETH, 'ViperRouter: INVALID_PATH');
+        require(path[0] == WATP, 'ViperRouter: INVALID_PATH');
         amounts = ViperLibrary.getAmountsOut(factory, msg.value, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'ViperRouter: INSUFFICIENT_OUTPUT_AMOUNT');
-        IWETH(WETH).deposit{value: amounts[0]}();
-        assert(IWETH(WETH).transfer(ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
+        IWATP(WATP).deposit.value(amounts[0])();
+        assert(IWATP(WATP).transfer(ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
     }
-    function swapTokensForExactETH(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
+    function swapTokensForExactATP(uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
         external
-        override
         ensure(deadline)
         returns (uint[] memory amounts)
     {
-        require(path[path.length - 1] == WETH, 'ViperRouter: INVALID_PATH');
+        require(path[path.length - 1] == WATP, 'ViperRouter: INVALID_PATH');
         amounts = ViperLibrary.getAmountsIn(factory, amountOut, path);
         require(amounts[0] <= amountInMax, 'ViperRouter: EXCESSIVE_INPUT_AMOUNT');
         TransferHelper.safeTransferFrom(path[0], msg.sender, ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]);
         _swap(amounts, path, address(this));
-        IWETH(WETH).withdraw(amounts[amounts.length - 1]);
-        TransferHelper.safeTransferETH(to, amounts[amounts.length - 1]);
+        IWATP(WATP).withdraw(amounts[amounts.length - 1]);
+        TransferHelper.safeTransferATP(to, amounts[amounts.length - 1]);
     }
-    function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
+    function swapExactTokensForATP(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
         external
-        override
         ensure(deadline)
         returns (uint[] memory amounts)
     {
-        require(path[path.length - 1] == WETH, 'ViperRouter: INVALID_PATH');
+        require(path[path.length - 1] == WATP, 'ViperRouter: INVALID_PATH');
         amounts = ViperLibrary.getAmountsOut(factory, amountIn, path);
         require(amounts[amounts.length - 1] >= amountOutMin, 'ViperRouter: INSUFFICIENT_OUTPUT_AMOUNT');
         TransferHelper.safeTransferFrom(path[0], msg.sender, ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]);
         _swap(amounts, path, address(this));
-        IWETH(WETH).withdraw(amounts[amounts.length - 1]);
-        TransferHelper.safeTransferETH(to, amounts[amounts.length - 1]);
+        IWATP(WATP).withdraw(amounts[amounts.length - 1]);
+        TransferHelper.safeTransferATP(to, amounts[amounts.length - 1]);
     }
-    function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
+    function swapATPForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
         external
-        override
         payable
         ensure(deadline)
         returns (uint[] memory amounts)
     {
-        require(path[0] == WETH, 'ViperRouter: INVALID_PATH');
+        require(path[0] == WATP, 'ViperRouter: INVALID_PATH');
         amounts = ViperLibrary.getAmountsIn(factory, amountOut, path);
         require(amounts[0] <= msg.value, 'ViperRouter: EXCESSIVE_INPUT_AMOUNT');
-        IWETH(WETH).deposit{value: amounts[0]}();
-        assert(IWETH(WETH).transfer(ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
+        IWATP(WATP).deposit.value(amounts[0])();
+        assert(IWATP(WATP).transfer(ViperLibrary.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
-        if (msg.value > amounts[0]) TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]); // refund dust eth, if any
+        if (msg.value > amounts[0]) TransferHelper.safeTransferATP(msg.sender, msg.value - amounts[0]); // refund dust ATP, if any
     }
 
-    function quote(uint amountA, uint reserveA, uint reserveB) public pure override returns (uint amountB) {
+    function quote(uint amountA, uint reserveA, uint reserveB) public pure returns (uint amountB) {
         return ViperLibrary.quote(amountA, reserveA, reserveB);
     }
 
-    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) public pure override returns (uint amountOut) {
+    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) public pure returns (uint amountOut) {
         return ViperLibrary.getAmountOut(amountIn, reserveIn, reserveOut);
     }
 
-    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) public pure override returns (uint amountIn) {
+    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) public pure returns (uint amountIn) {
         return ViperLibrary.getAmountOut(amountOut, reserveIn, reserveOut);
     }
 
-    function getAmountsOut(uint amountIn, address[] memory path) public view override returns (uint[] memory amounts) {
+    function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts) {
         return ViperLibrary.getAmountsOut(factory, amountIn, path);
     }
 
-    function getAmountsIn(uint amountOut, address[] memory path) public view override returns (uint[] memory amounts) {
+    function getAmountsIn(uint amountOut, address[] memory path) public view returns (uint[] memory amounts) {
         return ViperLibrary.getAmountsIn(factory, amountOut, path);
     }
 }

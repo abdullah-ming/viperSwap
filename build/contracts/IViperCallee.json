@@ -1,0 +1,403 @@
+{
+  "contractName": "IViperCallee",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount0",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount1",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "viperCall",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"viperCall\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperCallee.sol\":\"IViperCallee\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperCallee.sol\":{\"keccak256\":\"0xedb3eef3835dda00ced7c394ffcf5fa90d287e9de7507cfe1c6d41f26074b7ed\",\"urls\":[\"bzz-raw://038df41e57a2d5cd70ae24e34e7abc637b61c2167c2f6794ca523f7b4b1e7182\",\"dweb:/ipfs/QmZYDxF4KBkmc3HrMas1pWETEqFoqm7dcEvDTqqh5nqqPm\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// pragma solidity >=0.5.0;\npragma solidity ^0.5.16;\n\ninterface IViperCallee {\n    function viperCall(address sender, uint amount0, uint amount1, bytes calldata data) external;\n}",
+  "sourcePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperCallee.sol",
+  "ast": {
+    "absolutePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperCallee.sol",
+    "exportedSymbols": {
+      "IViperCallee": [
+        6699
+      ]
+    },
+    "id": 6700,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6687,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "28:24:11"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6699,
+        "linearizedBaseContracts": [
+          6699
+        ],
+        "name": "IViperCallee",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6698,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "viperCall",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6689,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "102:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6688,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "102:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6691,
+                  "name": "amount0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "118:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6690,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "118:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6693,
+                  "name": "amount1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "132:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6692,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "132:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6695,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "146:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6694,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "146:5:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "101:65:11"
+            },
+            "returnParameters": {
+              "id": 6697,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "175:0:11"
+            },
+            "scope": 6699,
+            "src": "83:93:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6700,
+        "src": "54:124:11"
+      }
+    ],
+    "src": "28:150:11"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperCallee.sol",
+    "exportedSymbols": {
+      "IViperCallee": [
+        6699
+      ]
+    },
+    "id": 6700,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6687,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "28:24:11"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6699,
+        "linearizedBaseContracts": [
+          6699
+        ],
+        "name": "IViperCallee",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6698,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "viperCall",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6689,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "102:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6688,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "102:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6691,
+                  "name": "amount0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "118:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6690,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "118:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6693,
+                  "name": "amount1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "132:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6692,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "132:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6695,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6698,
+                  "src": "146:19:11",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6694,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "146:5:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "101:65:11"
+            },
+            "returnParameters": {
+              "id": 6697,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "175:0:11"
+            },
+            "scope": 6699,
+            "src": "83:93:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6700,
+        "src": "54:124:11"
+      }
+    ],
+    "src": "28:150:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.18",
+  "updatedAt": "2021-11-15T04:37:29.313Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

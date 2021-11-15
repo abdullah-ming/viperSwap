@@ -1,4 +1,4 @@
-pragma solidity =0.5.16;
+pragma solidity ^0.5.16;
 
 import './interfaces/IViperFactory.sol';
 import './ViperPair.sol';

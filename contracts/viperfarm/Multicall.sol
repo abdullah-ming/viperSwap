@@ -1,4 +1,5 @@
-pragma solidity >=0.5.0;
+// pragma solidity >=0.5.0;
+pragma solidity ^0.5.16;
 pragma experimental ABIEncoderV2;
 
 /// @title Multicall - Aggregate results from multiple read-only function calls
@@ -21,7 +22,7 @@ contract Multicall {
         }
     }
     // Helper functions
-    function getEthBalance(address addr) public view returns (uint256 balance) {
+    function getAtpBalance(address addr) public view returns (uint256 balance) {
         balance = addr.balance;
     }
     function getBlockHash(uint256 blockNumber) public view returns (bytes32 blockHash) {
