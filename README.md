@@ -59,6 +59,10 @@ truffle compile
 git clone https://github.com/pancakeswap/pancake-frontend.git
 ```
 
+大致对frontend代码了解之后，需要修改的有以下几点：
+
+pancakeswap/sdk，在这里主要修改Chain ID，FACTORY_ADDRESS即ViperFactory的合约地址，以及PlatON地址和以太坊地址兼容 
+
 拿到上个步骤部署的合约地址，在路径/pancake-frontend/node_modules/@pancakeswap/sdk/dist/constants.d.ts修改：
 chain-ID，FACTORY_ADDRESS，INIT_CODE_HASH
 
@@ -82,6 +86,3 @@ yarn build
 yarn start
 ```
 
-### 5. 接入Samurai钱包
-
-待更新。。。
