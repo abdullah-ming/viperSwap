@@ -4,8 +4,9 @@ const WATP = artifacts.require("WATP");
 const viperRouter01 = artifacts.require("ViperRouter01");
 // const viperV2ERC20 = artifacts.require("ViperERC20");
 const feeToSetter='atp1rzpujegp3uhdl6pfdcrjt04xja456656pssudz'; //有权更改 feeTo 地址的账户,为当前合约部署者
-
-module.exports = async function(deployer) {
+console.log('2222')
+module.exports = async function(deployer, network, accounts) {
+   console.log('111', accounts)
    await deployer.deploy(viperFactory,feeToSetter);
    console.log('viperFactory at:',viperFactory.address);
 

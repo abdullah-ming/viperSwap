@@ -37,25 +37,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountATPMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"migrate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperMigrator.sol\":\"IViperMigrator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperMigrator.sol\":{\"keccak256\":\"0x1c5fe7334d17f12ec2a0e9ae29bf90439eb6b58e9325ab194de0f50bec69180d\",\"urls\":[\"bzz-raw://1bdf0e020a517ab0fef8bf0899001d701f51d9a5ef6c87608109ca65a079563c\",\"dweb:/ipfs/Qmf62pnuksVmTBajuHe5W8x1dFpipX6g2E6KRRs4uFGHjm\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountTokenMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountATPMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"migrate\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/mingcai/Documents/GitHub/viperSwap1/contracts/interfaces/IViperMigrator.sol\":\"IViperMigrator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/mingcai/Documents/GitHub/viperSwap1/contracts/interfaces/IViperMigrator.sol\":{\"keccak256\":\"0x1c5fe7334d17f12ec2a0e9ae29bf90439eb6b58e9325ab194de0f50bec69180d\",\"urls\":[\"bzz-raw://1bdf0e020a517ab0fef8bf0899001d701f51d9a5ef6c87608109ca65a079563c\",\"dweb:/ipfs/Qmf62pnuksVmTBajuHe5W8x1dFpipX6g2E6KRRs4uFGHjm\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity >=0.5.16;\n\ninterface IViperMigrator {\n    function migrate(address token, uint amountTokenMin, uint amountATPMin, address to, uint deadline) external;\n}",
-  "sourcePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperMigrator.sol",
+  "sourcePath": "/Users/mingcai/Documents/GitHub/viperSwap1/contracts/interfaces/IViperMigrator.sol",
   "ast": {
-    "absolutePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperMigrator.sol",
+    "absolutePath": "/Users/mingcai/Documents/GitHub/viperSwap1/contracts/interfaces/IViperMigrator.sol",
     "exportedSymbols": {
       "IViperMigrator": [
-        6896
+        11807
       ]
     },
-    "id": 6897,
+    "id": 11808,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6882,
+        "id": 11793,
         "literals": [
           "solidity",
           ">=",
@@ -63,7 +63,7 @@
           ".16"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:25:14"
+        "src": "0:25:26"
       },
       {
         "baseContracts": [],
@@ -71,9 +71,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6896,
+        "id": 11807,
         "linearizedBaseContracts": [
-          6896
+          11807
         ],
         "name": "IViperMigrator",
         "nodeType": "ContractDefinition",
@@ -81,23 +81,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6895,
+            "id": 11806,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "migrate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6893,
+              "id": 11804,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6884,
+                  "id": 11795,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "75:13:14",
+                  "scope": 11806,
+                  "src": "75:13:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -105,10 +105,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6883,
+                    "id": 11794,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "75:7:14",
+                    "src": "75:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -120,11 +120,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6886,
+                  "id": 11797,
                   "name": "amountTokenMin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "90:19:14",
+                  "scope": 11806,
+                  "src": "90:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -132,10 +132,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6885,
+                    "id": 11796,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "90:4:14",
+                    "src": "90:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -146,11 +146,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6888,
+                  "id": 11799,
                   "name": "amountATPMin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "111:17:14",
+                  "scope": 11806,
+                  "src": "111:17:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -158,10 +158,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6887,
+                    "id": 11798,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "111:4:14",
+                    "src": "111:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -172,11 +172,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6890,
+                  "id": 11801,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "130:10:14",
+                  "scope": 11806,
+                  "src": "130:10:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -184,10 +184,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6889,
+                    "id": 11800,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "130:7:14",
+                    "src": "130:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -199,11 +199,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6892,
+                  "id": 11803,
                   "name": "deadline",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "142:13:14",
+                  "scope": 11806,
+                  "src": "142:13:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -211,10 +211,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6891,
+                    "id": 11802,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "142:4:14",
+                    "src": "142:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -224,39 +224,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "74:82:14"
+              "src": "74:82:26"
             },
             "returnParameters": {
-              "id": 6894,
+              "id": 11805,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "165:0:14"
+              "src": "165:0:26"
             },
-            "scope": 6896,
-            "src": "58:108:14",
+            "scope": 11807,
+            "src": "58:108:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6897,
-        "src": "27:141:14"
+        "scope": 11808,
+        "src": "27:141:26"
       }
     ],
-    "src": "0:168:14"
+    "src": "0:168:26"
   },
   "legacyAST": {
-    "absolutePath": "/Users/mingcai/Documents/GitHub/ViperSwap/contracts/interfaces/IViperMigrator.sol",
+    "absolutePath": "/Users/mingcai/Documents/GitHub/viperSwap1/contracts/interfaces/IViperMigrator.sol",
     "exportedSymbols": {
       "IViperMigrator": [
-        6896
+        11807
       ]
     },
-    "id": 6897,
+    "id": 11808,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6882,
+        "id": 11793,
         "literals": [
           "solidity",
           ">=",
@@ -264,7 +264,7 @@
           ".16"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:25:14"
+        "src": "0:25:26"
       },
       {
         "baseContracts": [],
@@ -272,9 +272,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6896,
+        "id": 11807,
         "linearizedBaseContracts": [
-          6896
+          11807
         ],
         "name": "IViperMigrator",
         "nodeType": "ContractDefinition",
@@ -282,23 +282,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6895,
+            "id": 11806,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "migrate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6893,
+              "id": 11804,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6884,
+                  "id": 11795,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "75:13:14",
+                  "scope": 11806,
+                  "src": "75:13:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -306,10 +306,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6883,
+                    "id": 11794,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "75:7:14",
+                    "src": "75:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -321,11 +321,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6886,
+                  "id": 11797,
                   "name": "amountTokenMin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "90:19:14",
+                  "scope": 11806,
+                  "src": "90:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -333,10 +333,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6885,
+                    "id": 11796,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "90:4:14",
+                    "src": "90:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -347,11 +347,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6888,
+                  "id": 11799,
                   "name": "amountATPMin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "111:17:14",
+                  "scope": 11806,
+                  "src": "111:17:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -359,10 +359,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6887,
+                    "id": 11798,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "111:4:14",
+                    "src": "111:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -373,11 +373,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6890,
+                  "id": 11801,
                   "name": "to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "130:10:14",
+                  "scope": 11806,
+                  "src": "130:10:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -385,10 +385,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6889,
+                    "id": 11800,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "130:7:14",
+                    "src": "130:7:26",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -400,11 +400,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6892,
+                  "id": 11803,
                   "name": "deadline",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6895,
-                  "src": "142:13:14",
+                  "scope": 11806,
+                  "src": "142:13:26",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -412,10 +412,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6891,
+                    "id": 11802,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "142:4:14",
+                    "src": "142:4:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -425,34 +425,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "74:82:14"
+              "src": "74:82:26"
             },
             "returnParameters": {
-              "id": 6894,
+              "id": 11805,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "165:0:14"
+              "src": "165:0:26"
             },
-            "scope": 6896,
-            "src": "58:108:14",
+            "scope": 11807,
+            "src": "58:108:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6897,
-        "src": "27:141:14"
+        "scope": 11808,
+        "src": "27:141:26"
       }
     ],
-    "src": "0:168:14"
+    "src": "0:168:26"
   },
   "compiler": {
     "name": "solc",
     "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.18",
-  "updatedAt": "2021-11-15T04:37:29.315Z",
+  "schemaVersion": "3.0.20",
+  "updatedAt": "2021-12-06T09:30:47.402Z",
   "devdoc": {
     "methods": {}
   },
